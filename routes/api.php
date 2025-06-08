@@ -36,13 +36,25 @@ Route::middleware('auth:sanctum')
 
 ///----------------------------------------------Cart----------------------------------------------///
 
-Route::middleware('auth:sanctum')
+Route::middleware(['web', 'auth:sanctum'])
     ->prefix('cart')
     ->controller(\App\Http\Controllers\Cart\CartController::class)
     ->group(function () {
         Route::get('/', 'index');
         Route::post('/add', 'add');
         Route::post('/remove', 'remove');
+        Route::post('/clear', 'clear');
     });
+
+
+//Route::middleware('auth:sanctum')
+//    ->prefix('cart')
+//    ->controller(\App\Http\Controllers\Cart\CartController::class)
+//    ->group(function () {
+//        Route::get('/', 'index');
+//        Route::post('/add', 'add');
+//        Route::post('/remove', 'remove');
+//    });
+
 
 

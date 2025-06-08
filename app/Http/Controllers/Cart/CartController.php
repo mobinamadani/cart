@@ -47,17 +47,18 @@ class CartController extends Controller
 
     }
 
-    public function remove($key)
+    public function remove(Request $request)
     {
-        $cart = session()->get('cart', []);
-        if(isset($cart[$key])){
-            unset($cart[$key]);
+        $key = $request->input('key');
 
+        $cart = session()->get('cart', []);
+        if (isset($cart[$key])) {
+            unset($cart[$key]);
             session()->put('cart', $cart);
         }
 
         return response()->json([
-           'message'=> 'محصول حذف شد',
+            'message' => 'محصول حذف شد',
             'cart' => $cart
         ]);
     }
@@ -70,8 +71,5 @@ class CartController extends Controller
            'message'=> 'سبد خرید خالی شد'
         ]);
     }
-
-
-
 
 }
