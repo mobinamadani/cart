@@ -41,7 +41,7 @@ class CartController extends Controller
 
         session()->put('cart', $cart);
         return response()->json([
-            'message'=> 'محصول به سبذ خرید اضافه شد',
+            'message'=> 'محصول به سبد خرید اضافه شد',
             'cart' => $cart
         ]);
 
